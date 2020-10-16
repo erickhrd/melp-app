@@ -1,0 +1,24 @@
+.restaurants__title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #960f12;
+    margin: 15px;
+}
+
+.sortBy{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 90%;
+}
+
+.sortBy > button {
+    cursor: pointer;
+}
+
+.sortBy-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

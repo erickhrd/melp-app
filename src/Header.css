@@ -1,22 +1,45 @@
-.header {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #960f12;
+.header__hero {
+    height: 80vh;
+    background-image: url('https://s3-media0.fl.yelpcdn.com/assets/srv0/yelp_large_assets/252051bf4fce/assets/img/home/hero_photos/oYJx-YOK9dqe0F56bS2tDQ.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
     position: sticky;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     top: 0;
     z-index: 100;
 }
 
+.header__center {
+    height: 80vh;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;
+    
+}
+
 .header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.header__logoPic{
     width: 100px;
     object-fit: contain;
-   
+    background-color: #960f12;
 }
 
 .header__search {
     display: flex;
-    flex:1;
+    justify-content: center;
     align-items: center;
     border-radius: 24px;
 }
@@ -37,10 +60,16 @@
 
 .header__option {
     display: flex;
+    align-items: flex-end;
     flex-direction: row;
     margin-left: 10px;
     margin-right: 10px;
     color:white;
+}
+
+.header__option > button {
+    width: 100px;
+    height: 30px;
 }
 
 .header__optionOne{
@@ -54,20 +83,32 @@
     cursor: pointer;
 }
 
+.header__optionOne:hover{
+    border-bottom:1px solid white;
+}
+
 .header__optionTwo{
     margin-right: 7px;
     font-size: 13px;
     font-weight: 800;
-    color:#960f12;
+    color:white;
     text-decoration: none;
-    background-color: white;
+    background-color: transparent;
     border: 1px solid white;
-    border-radius: 5px;
+    border-radius: 2px;
     cursor: pointer;
 }
 
+.header__optionTwo:hover{
+    color:#960f12;
+    background-color: white;
+}
 
 .header__nav {
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80%;
+    margin-top:10px;
+
 }
