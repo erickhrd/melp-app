@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Restaurant from './Restaurant';
 import Grid from '@material-ui/core/Grid';
-import useFetch from './useFetch';
 import axios from 'axios';
 
 
