@@ -1,8 +1,8 @@
 import React from 'react';
 import './Restaurant.css';
 
-function Restaurant({rating, name, site, email, phone, street, city, state, lat, lng}) {
-    const maxLength = 95;
+function Restaurant({ rating, name, site, email, phone, street, city, state, lat, lng}) {
+    
     return (
         <div className="restaurant">
             <div className="restaurant__info">

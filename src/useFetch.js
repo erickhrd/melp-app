@@ -20,8 +20,6 @@ export default (url, options = { body: {}, query: {} }) => {
     setData({ ...data, error: null, loading: true })
     fetch(createUrl(url, options.query), {  
       method: options.method || "GET",
-      credentials: "omit",  
-      cache: "no-cache", 
       headers: {
         "Content-Type": "application/json",
       },

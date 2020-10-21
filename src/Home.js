@@ -1,30 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Home.css';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import Restaurant from './Restaurant';
 import Grid from '@material-ui/core/Grid';
 import useFetch from './useFetch';
+import axios from 'axios';
 
 
 
 
 function Home() {
-    const [currentPage, setCurrentPage] = useState(1);
-    const { response, error, loading } = useFetch(
-      '/data_melp.json',
-      {
-        query: {
-          page: currentPage,
-          pageSize: 5,
-        },
-      }
-    );
+  const [restaurants, setRestaurants] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(10);
+
+    useEffect(() => {
+        const fetchPosts = async () => {
+          setLoading(true);
+          const res = await axios.get('/data_melp.json');
+          setRestaurants(res.data);
+          setLoading(false);
+        }
+        fetchPosts();
+      }, [])
+
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const totalPosts= Math.ceil(restaurants.length/postsPerPage);
 
   if (loading) {
     return <div className="loading"><h1>Loading...</h1></div>;
-  }
-  if (error) {
-    return <div className="error">{JSON.stringify(error)}</div>;
   }
     return (
         <div className="home">
@@ -32,10 +38,14 @@ function Home() {
                  <h1>Find the Best Restaurants in Town</h1>
             </div>
             <div className="sortBy">
-               <button className="sortBy-btn">Sort: <strong>Default</strong><ArrowDropDownIcon/></button>
+               <select>
+                        <option value="default">Sort: Default</option>
+                        <option value="alphabetically">Alphabetically</option>
+                        <option value="rating">Best Rating</option>
+                </select>
             </div>
       {!loading &&
-        response.map((data) => {
+        restaurants.slice(indexOfFirstPost, indexOfLastPost).map((data) => {
           return (
             <div className="datapoint">
          <Grid container spacing={2}>
@@ -47,25 +57,27 @@ function Home() {
             
           );
         })}
-      <div className="pagination">
-        {currentPage > 1 && (
-          <button
-            onClick={() => {
-              setCurrentPage(currentPage - 1);
-            }}
-          >
-            Go to page {currentPage - 1}
-          </button>
-        )}
-        <button
-          onClick={() => {
-            setCurrentPage(currentPage + 1);
-          }}
-        >
-          Go to page {currentPage + 1}
-        </button>
-      </div>
+        <div className="pagination">
+            {currentPage > 1 && (
+            <button
+                onClick={() => {
+                setCurrentPage(currentPage - 1);
+                }}
+            >
+                Go to page {currentPage - 1}
+            </button>
+            )}
+            {currentPage < totalPosts && (
+            <button
+                onClick={() => {
+                    setCurrentPage(currentPage + 1);
+                }}
+            >
+               Go to page {currentPage + 1}
+            </button>
+            )}
         </div>
+     </div>
             
     )
 }

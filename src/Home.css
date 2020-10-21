@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
     color: #960f12;
     margin: 15px;
 }
