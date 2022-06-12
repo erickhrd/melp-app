@@ -2,12 +2,13 @@ import React from 'react';
 import './Restaurant.css';
 
 function Restaurant({ rating, name, site, email, phone, street, city, state, lat, lng}) {
+
     
     return (
         <div className="restaurant">
             <div className="restaurant__info">
-                 <div className="restaurant__top"> 
-                     <h3>{name}</h3>     
+                 <div className="restaurant__top">
+                    <h3>{name}</h3>
                 </div>
                  <div className="restaurant__rating">
                     {Array(rating).fill().map((_,i)=> (
@@ -31,9 +32,5 @@ function Restaurant({ rating, name, site, email, phone, street, city, state, lat
         </div>
     )
 }
-//id, name,{ contact:site,email, phone}, {address:street, city, state}, location
-//{title.length > maxLength ? `${title.substring(0, maxLength)}...` : title}
-/*{Array(rating).fill().map((_,i)=> (
-    <p>⭐️</p>
-))}*/
+
 export default Restaurant
