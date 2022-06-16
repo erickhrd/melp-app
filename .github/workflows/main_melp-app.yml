@@ -35,8 +35,8 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ env.AZURE_WEBAPP_NAME }}
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          name: node-app
+          path: melp-app/
 
   deploy:
     runs-on: ubuntu-latest
