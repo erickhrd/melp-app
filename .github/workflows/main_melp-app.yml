@@ -58,4 +58,4 @@ jobs:
           app-name: melp-app
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D434050409DC4F9DA75A20860DE21764 }}
-          package: build
+          package: .
